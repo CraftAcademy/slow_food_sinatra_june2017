@@ -51,7 +51,18 @@ class SlowFood < Sinatra::Base
   end
 
   get '/' do
+    @menus = Menu.all
     erb :index
+  end
+
+  get '/register' do
+    erb :register
+  end
+
+  post '/create-account' do
+    user = User.create(params[:user])
+    flash[:success] = "Successfully created account for #{user.username}"
+    redirect '/'
   end
 
   get '/auth/login' do
