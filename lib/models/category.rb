@@ -3,5 +3,5 @@ class Category
 
   property :id, Serial, key: true
   property :name, String
-  has n, :dishes, :model => 'Dish', :child_key => [:categoryId]
+  has n, :dishes
 end

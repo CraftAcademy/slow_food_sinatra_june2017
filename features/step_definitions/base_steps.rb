@@ -5,6 +5,8 @@ end
 Given(/^the following dishes exist$/) do |table|
   table.hashes.each do |dish|
     dish[:price] = dish[:price].to_i
+    category = Category.first(name: dish['category'])
+    dish['category'] = category
     Dish.create(dish)
   end
 end
