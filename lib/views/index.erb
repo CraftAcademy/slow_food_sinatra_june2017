@@ -1,0 +1,11 @@
+<h1>SlowMenu:</h1>
+<% @categories.each do |category| %>
+  <h2><%= category.name %></h2>
+  <br>
+  <% category.dishes.each do |dish| %>
+    <%= dish.name %>
+    <%= dish.description %>
+    <%= dish.price %>
+    <br>
+  <% end %>
+<% end %>
