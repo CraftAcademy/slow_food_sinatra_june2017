@@ -4,7 +4,6 @@ class User
 
   property :id, Serial, key: true
   property :username, String, length: 128
-
   property :password, BCryptHash
 
   def authenticate(attempted_password)
@@ -14,6 +13,10 @@ class User
       false
     end
   end
+
+
+  def print ()
+    Hej
+  end
+
 end
-
-

@@ -7,11 +7,11 @@ When(/^I click "([^"]*)"$/) do |text|
 end
 
 Then(/^I want to be "([^"]*)" to the register customer page$/) do |arg|
-  visit('/auth/register')
+  visit('/register')
 end
 
 Given(/^that I am on the "([^"]*)" page$/) do |arg1|
-  visit('/auth/register')
+  visit('/register')
 end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
@@ -20,4 +20,5 @@ end
 
 Then(/^I should see "([^"]*)"$/) do |content|
   expect(page).to have_content content
+  
 end

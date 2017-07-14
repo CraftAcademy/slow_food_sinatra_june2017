@@ -13,6 +13,6 @@ Scenario: Register a new customer
 Scenario: Fill in my contact information
   Given that I am on the "registration" page
   When I fill in "Username" with "John Doe"
-  And I fill in "Email" with "test@test.com"
+  And I fill in "Password" with "Password"
   And I click "Submit"
   Then I should see "Successfully created an account for John Doe"

@@ -1,4 +1,5 @@
 require 'bundler'
+
 Bundler.require
 Dir[File.join(File.dirname(__FILE__), 'models', '*.rb')].each { |file| require file }
 require_relative 'helpers/data_mapper'
@@ -56,6 +57,17 @@ class SlowFood < Sinatra::Base
 
   get '/register' do
     erb :register
+  end
+
+  get '/create-account' do
+    redirect '/'
+  end
+
+  post '/create-account' do
+    userdata = {username: params[:Username], password: params[:Password]}
+    User.create(userdata)
+    flash[:success] = "Successfully created the user #{params[:Username]}"
+    redirect '/'
   end
 
   get '/auth/login' do
