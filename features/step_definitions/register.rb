@@ -18,7 +18,10 @@ When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
   fill_in field, with: value
 end
 
-Then(/^I should see "([^"]*)"$/) do |content|
+When(/^I am Redirected to the main page$/) do
   visit('/')
+end
+
+Then(/^I should see "([^"]*)"$/) do |content|
   expect(page).to have_content content
 end

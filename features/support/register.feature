@@ -15,4 +15,5 @@ Scenario: Fill in my contact information
   When I fill in "Username" with "John Doe"
   And I fill in "Password" with "Password"
   And I click "Submit"
-  Then I should see "Successfully created an account for John Doe"
+  And I am Redirected to the main page
+  Then I should see "Successfully created an account for user"
