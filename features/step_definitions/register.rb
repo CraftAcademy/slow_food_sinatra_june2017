@@ -19,6 +19,6 @@ When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
 end
 
 Then(/^I should see "([^"]*)"$/) do |content|
+  visit('/')
   expect(page).to have_content content
-  
 end
