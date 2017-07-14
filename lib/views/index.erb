@@ -1,11 +1,37 @@
-<h1>SlowMenu:</h1>
-<% @categories.each do |category| %>
-  <h2><%= category.name %></h2>
-  <br>
-  <% category.dishes.each do |dish| %>
-    <%= dish.name %>
-    <%= dish.description %>
-    <%= dish.price %>
-    <br>
-  <% end %>
-<% end %>
+<% if @my_cart.count != 0 %>
+  <div class="cell box" id="shopping_cart">
+    <div class="stitched">
+      <h3>Shopping cart</h3>
+      <hr color="white" style="margin-top: 1px;">
+      <% @my_cart.each do |item| %>
+        <div class="">
+          <h3 class="dish_name"><%=item.dish_name%> </h3>
+          <h3 class="dish_price">Quantity:  <%=item.quantity%></h3>
+          <hr color="green" class=".clearfix">
+        </div>
+      <%end%>
+      <a href="./clear_cart">Empty the cart!</a>
+    </div>
+  </div>
+<%end%>
+
+<div class="cell box">
+  <div class="stitched">
+    <h1>SlowMenu:</h1>
+    <% @categories.each do |category| %>
+      <h2><%= category.name %></h2>
+      <% category.dishes.each do |dish| %>
+        <form class="dishes" action="/" method="post">
+          <input type="hidden" name="dish_id" value="<%= dish.id %>">
+            <div class="item_container">
+              <span class="dish_name"><%= dish.name %></span>
+              <button type="submit" class="add_dish lined" name="add_dish" value="add">add</button>
+              <span class="dish_price"><%= dish.price %> kr</span>
+              <div class="dish_description"><%= dish.description %></div>
+            </div>
+          <br>
+        </form>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Shadows+Into+Light');
+
+body {
+  background-image: url(../img/bg.png);
+  background-attachment: fixed;
+  color: rgba(255, 255, 255, 0.70);
+  margin-top: 20px;
+  margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: green;
+}
+
+p {
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2, h3, h4, h5 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+.container {
+  max-width: 800px;
+  min-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box {
+    background-image: url(../img/black.jpg);
+    background-color: orange;
+    margin-top: 20px;
+    padding: 8px;
+    box-shadow: 4px 4px 4px #888888;
+    border: 2px solid rgba(25, 25, 25, 0.9);
+    color: rgba(255, 255, 255, 0.70);
+    overflow:auto;
+}
+
+
+
+.square {
+  width: 30px;
+}
+
+.stitched {
+   padding: 35px;
+   margin: 5px;
+   margin-right: 10px;
+   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+   border: dashed 2px rgba(255, 255, 255, 0.70);
+   width: auto;
+   height: 100%
+}
+
+.lined {
+   padding: 5px;
+   margin: 5px;
+   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+   border: dashed 2px rgba(255, 255, 255, 0.70);
+   border: solid 2px rgba(255, 255, 255, 0.70);
+   color: rgba(255, 255, 255, 0.70);
+   font-family: 'Roboto', sans-serif;
+   font-size: 14px;
+   font-weight: thin;
+   background-color: rgba(5, 5, 5, 0.15);
+   padding: 6px;
+   margin: 0px;
+   margin-left: 8px;
+   line-height: 1;
+   float: right;
+}
+
+.dish_name {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(5, 5, 5, 0.15);
+  padding: 5px;
+  margin: 0px;
+  line-height: 1;
+  float: left;
+}
+
+.dish_price {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(5, 5, 5, 0.15);
+  padding: 5px;
+  margin: 0px;
+  line-height: 1;
+  float: right;
+}
+
+.dish_description {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  background-color: rgba(5, 5, 5, 0.15);
+  padding: 5px;
+  margin-bottom: 15px;
+  line-height: normal;
+  clear: both;
+}
+
+.logo {
+  margin: 20px;
+}

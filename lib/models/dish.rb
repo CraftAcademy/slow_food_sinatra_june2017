@@ -5,5 +5,5 @@ class Dish
   property :name, String
   property :description, String
   property :price, Integer
-  belongs_to :category, :model => 'Category', :child_key => [:categoryId]
+  belongs_to :category
 end

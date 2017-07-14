@@ -1,32 +1,62 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slow Food</title>
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+
+</head>
+
 <body>
-<title>Sinatra Warden</title>
 
-<h1>The Gluttany</h1>
+  <div class="container">
 
-<p>
-  <% if current_user %>
-    Logged in as <%= current_user.username %>
-    <a href="/auth/logout">Log Out</a></p>
-  <% else %>
+    <div class="grid-x">
+      <div class="cell">
+        <center><img src="./img/logo.png" alt="" class=".logo" style="margion: 1000px;"></center>
+      </div>
+      <div class="cell">
+        <div class="cell">
+          <% if flash[:success] %>
+            <div style="color:green;">
+              <%= flash[:success] %>
+            </div>
+          <% end %>
 
-    <a href="/auth/login">Log In</a>
-  <% end %>
+          <% if flash[:error] %>
+            <div style="color:red;">
+              <%= flash[:error] %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="cell">
+        <ul class="menu box">
+          <li><a href="#" style="color: rgba(255, 255, 255, 0.8);">Food menu</a></li>
+          <li><a href="#" style="color: rgba(255, 255, 255, 0.8);">About</a></li>
+          <li><a href="#" style="color: rgba(255, 255, 255, 0.8);">Register</a></li>
+          <% if current_user %>
+            <li>
+              Logged in as <%= current_user.username %>
+              <a href="/auth/logout">Log Out</a>
+            </li>
+          <% else %>
+            <li><a href="/auth/login">Log In</a></li>
+          <% end %>
+        </ul>
+      </div>
+      <%= yield %>
+  </div>
 
-  <% if flash[:success] %>
-    <div style="color:green;">
-      <%= flash[:success] %>
-    </div>
-  <% end %>
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/what-input.js"></script>
+  <script src="js/vendor/foundation.js"></script>
+  <script src="js/app.js"></script>
+</body>
 
-  <% if flash[:error] %>
-    <div style="color:red;">
-      <%= flash[:error] %>
-    </div>
-  <% end %>
-
-  <%= yield %>
-  </body>
 </html>
