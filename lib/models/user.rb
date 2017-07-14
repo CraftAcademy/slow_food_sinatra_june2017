@@ -13,10 +13,4 @@ class User
       false
     end
   end
-
-
-  def print ()
-    Hej
-  end
-
 end

@@ -6,11 +6,11 @@ When(/^I click "([^"]*)"$/) do |text|
   click_link_or_button(text)
 end
 
-Then(/^I want to be "([^"]*)" to the register customer page$/) do |arg|
+Then(/^I want to be redirected to the register customer page$/) do
   visit('/register')
 end
 
-Given(/^that I am on the "([^"]*)" page$/) do |arg1|
+Given(/^that I am on the registration page$/) do
   visit('/register')
 end
 
@@ -22,6 +22,10 @@ When(/^I am Redirected to the main page$/) do
   visit('/')
 end
 
+When(/^show me page$/) do
+  save_and_open_page
+end
+
 Then(/^I should see "([^"]*)"$/) do |content|
-  page.should have_content('Successfully created the user')
+  expect(page).to have_content content
 end

@@ -7,10 +7,6 @@ require_relative 'helpers/warden'
 require 'pry'
 
 
-
-
-
-
 class SlowFood < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
@@ -59,14 +55,10 @@ class SlowFood < Sinatra::Base
     erb :register
   end
 
-  get '/create-account' do
-    redirect '/'
-  end
-
-  post '/create-account' do
-    userdata = {username: params[:Username], password: params[:Password]}
-    User.create(userdata)
-    flash[:success] = "Successfully created the user #{params[:Username]}"
+  post '/register' do
+    u = User.create(username: params[:username], password: params[:password])
+    flash[:success] = "Successfully created account for user #{params[:username]}"
+    env['warden'].set_user(u)
     redirect '/'
   end
 
