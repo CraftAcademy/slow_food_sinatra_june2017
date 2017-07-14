@@ -23,5 +23,5 @@ When(/^I am Redirected to the main page$/) do
 end
 
 Then(/^I should see "([^"]*)"$/) do |content|
-  expect(page).to have_content content
+  page.should have_content('Successfully created the user')
 end
