@@ -5,6 +5,15 @@ Feature: Register a customer
   In order to create a new account I need to fill in my contact info
   I want to see a confirmation message
 
+Scenario: Login a customer
+  Given I am on main page
+  #And show page
+  When I click the link "login"
+  And i want to fill in "username"
+  And I want to fill in "password"
+  Then I want to be redirected to the login customer page
+  And I want o see a message
+
 Scenario: Register a new customer
   Given that I can see the menu page
   When I click "Register"
