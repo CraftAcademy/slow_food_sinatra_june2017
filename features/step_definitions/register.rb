@@ -34,9 +34,7 @@ Given(/^I am on main page$/) do
   visit('/')
 end
 
-#Given(/^show page$/) do
-#  save_and_open_page
-#end
+
 
 When(/^I click the link "([^"]*)"$/) do |login|
   click_link_or_button(login)
@@ -46,12 +44,13 @@ Then(/^I want to be redirected to the login customer page$/) do
   visit('/auth/login')
 end
 
-When(/^i want to fill in "([^"]*)"$/) do |username|
-  fill_in field, with: username
-end
 
-When(/^I want to fill in "([^"]*)"$/) do |password|
-  fill_in field, with: password
+#Given(/^show page$/) do
+#  save_and_open_page
+#end
+
+When(/^i want to fill in "([^"]*)" with "([^"]*)"$/) do |field, admin|
+  fill_in field, with: admin
 end
 
 Then(/^I want o see a message$/) do

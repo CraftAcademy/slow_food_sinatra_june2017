@@ -7,10 +7,10 @@ Feature: Register a customer
 
 Scenario: Login a customer
   Given I am on main page
-  #And show page
   When I click the link "login"
-  And i want to fill in "username"
-  And I want to fill in "password"
+  #And show page
+  And i want to fill in "username" with "admin"
+  And I want to fill in "password" with "admin"
   Then I want to be redirected to the login customer page
   And I want o see a message
 
