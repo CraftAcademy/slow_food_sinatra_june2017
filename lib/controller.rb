@@ -1,13 +1,10 @@
 require 'bundler'
+
 Bundler.require
 Dir[File.join(File.dirname(__FILE__), 'models', '*.rb')].each { |file| require file }
 require_relative 'helpers/data_mapper'
 require_relative 'helpers/warden'
 require 'pry'
-
-
-
-
 
 
 class SlowFood < Sinatra::Base
@@ -53,6 +50,17 @@ class SlowFood < Sinatra::Base
   get '/' do
     @dishes = Dish.all
     erb :index
+  end
+
+  get '/register' do
+    erb :register
+  end
+
+  post '/register' do
+    u = User.create(username: params[:username], password: params[:password])
+    flash[:success] = "Successfully created account for user #{params[:username]}"
+    env['warden'].set_user(u)
+    redirect '/'
   end
 
   get '/auth/login' do

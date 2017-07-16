@@ -11,8 +11,8 @@
     Logged in as <%= current_user.username %>
     <a href="/auth/logout">Log Out</a></p>
   <% else %>
-
-    <a href="/auth/login">Log In</a>
+    <a href="/register">Register</a>
+    <a href="/auth/login">login</a>
   <% end %>
 
   <% if flash[:success] %>
