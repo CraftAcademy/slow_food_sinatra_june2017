@@ -11,6 +11,10 @@ Given(/^the following dishes exist$/) do |table|
   end
 end
 
+Given(/^the following customers exist:$/) do |table|
+  table.hashes.each { |user| User.create(user) }
+end
+
 Then(/^I should see "([^"]*)"$/) do |content|
   expect(page).to have_content content
 end

@@ -4,6 +4,10 @@ Feature: Placing an order
   I need to be able to place an order on the website
 
   Background:
+    Given the following customers exist:
+      | username | password |
+      | johndoe  | password |
+
     Given the following categories exist
       | name         |
       | Starter      |
@@ -16,7 +20,7 @@ Feature: Placing an order
       | Not so Special Burger | Meat Burger          | 25    | Main     |
 
   Scenario: A customer with an account needs to be able to checkout
-    Given I log in using "admin" and "admin"
+    Given I log in using "johndoe" and "password"
     When I visit the "menu" page
     And I add "Burger Special" to the shopping cart
     Then I should see "Burger Special" in my cart
@@ -25,7 +29,7 @@ Feature: Placing an order
     And I should see "The total for your order is 75 kr"
 
   Scenario: A customer can order multiple items
-    Given I log in using "admin" and "admin"
+    Given I log in using "johndoe" and "password"
     When I visit the "menu" page
     And I add "Burger Special" to the shopping cart
     Then I should see "Burger Special" in my cart
