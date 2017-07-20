@@ -5,6 +5,5 @@ class OrderItem
   property :quantity, Integer
 
   belongs_to :order
-  belongs_to :dish
-
+  has 1, :dish
 end
