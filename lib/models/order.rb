@@ -2,7 +2,7 @@ class Order
   include DataMapper::Resource
 
   property :id, Serial, key: true
-  property :order_date, Date
+  property :order_date, DateTime
   property :total_price, Integer
   property :order_status, String
 

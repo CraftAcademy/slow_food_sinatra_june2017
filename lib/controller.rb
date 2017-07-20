@@ -77,23 +77,25 @@ class SlowFood < Sinatra::Base
     unless current_user
       redirect '/auth/login'
     end
-    flash[:success] = "Order was placed, you can pick it up in 30 minutes <br> The total for your order is 75 kr"
-    @shopping_cart = Shopping_cart.new(session)
-    @shopping_cart.clear_cart()
-    #shopping_cart = Shopping_cart.new(session)
-    #order = Order.new(:user_id => current_user.id, :order_date => Date.new())
-    #rows = []
-    #shopping_cart.show_cart.each do | cart_item |
-    #  row = Row.new(:dish_id => cart_item.dish_id, :quantity => cart_item.quantity)
-    #  rows << row
-    #end
-    #order[:rows] = rows
-    #if order.save
-    #  puts "Order #{order.id} is saved"
-    #else
-    #  puts "Order failed"
-    #end
-    redirect '/'
+
+    shopping_cart = Shopping_cart.new(session)
+    order = Order.new
+    order.user = current_user
+    order.total_price = shopping_cart.cart_total
+    order.order_status = 'new'
+    order.order_date = DateTime.now
+
+    shopping_cart = shopping_cart.show_cart
+
+    shopping_cart.each do |item|
+      order_item = order.order_items.new(quantity: item.quantity)
+      order_item.dish = Dish.get(item.dish_id)
+    end
+
+    if order.save
+      flash[:success] = "Order was placed, you can pick it up in 30 minutes <br> The total for your order is #{order.total_price} kr"
+      redirect '/'
+    end
   end
 
   get '/about' do
