@@ -7,5 +7,4 @@ class Dish
   property :price, Integer
 
   belongs_to :category
-  belongs_to :order_item
 end
