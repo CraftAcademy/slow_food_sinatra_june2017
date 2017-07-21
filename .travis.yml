@@ -1,5 +1,8 @@
 language: ruby
 rvm: 2.2.3
+cache:
+  - bundler
+  - apt
 addons:
   postgresql: '9.6'
 before_install:
