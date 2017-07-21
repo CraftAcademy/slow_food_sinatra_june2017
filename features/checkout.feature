@@ -45,7 +45,6 @@ Feature: Placing an order
     Then I should see "Burger Special" in my cart
     When I click "Place order"
     Then I should be on the "login" page
-    Then show me the page
     And I should see "You need to be logged in to place an order"
     When I log in using "johndoe" and "password"
     Then I should be on the "index" page

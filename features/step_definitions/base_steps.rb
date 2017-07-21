@@ -1,5 +1,24 @@
-Given(/^I visit the menu page$/) do
-  visit '/'
+def page_path(page_name)
+  case page_name
+  when 'index', 'menu'
+    '/'
+  when 'login'
+    '/auth/login'
+  else
+    raise "#{page_name} doesn't exist"
+  end
+end
+
+When(/^I visit the "([^"]*)" page$/) do |page_name|
+  visit page_path(page_name)
+end
+
+When(/^I click "([^"]*)"$/) do |button_name|
+  click_button button_name
+end
+
+Then(/^I should be on the "([^"]*)" page$/) do |page_name|
+  expect(page).to have_current_path page_path(page_name)
 end
 
 Given(/^the following dishes exist$/) do |table|
@@ -24,7 +43,7 @@ Then(/^show me the page$/) do
 end
 
 Given(/^the following categories exist$/) do |table|
-  table.hashes.each do | category |
+  table.hashes.each do |category|
     Category.create(category)
   end
 end
@@ -39,8 +58,8 @@ Then(/^I should see "([^"]*)" in my cart$/) do |dish|
   end
 end
 
-Then(/^I should see "([^"]*)" in element "([^"]*)"$/) do |text, cssClass|
-  within('.'+cssClass) do
+Then(/^I should see "([^"]*)" in element "([^"]*)"$/) do |text, css_class|
+  within(".#{css_class}") do
     expect(page).to have_content text
   end
 end
@@ -50,7 +69,7 @@ Given(/^I add items to my cart$/) do
 end
 
 Then(/^I should see the "([^"]*)"$/) do |content|
-    expect(page).to have_content content
+  expect(page).to have_content content
 end
 
 Given(/^I log in using "([^"]*)" and "([^"]*)"$/) do |username, password|
