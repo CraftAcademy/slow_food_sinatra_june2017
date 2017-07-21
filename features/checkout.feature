@@ -45,11 +45,11 @@ Feature: Placing an order
     Then I should see "Burger Special" in my cart
     When I click "Place order"
     Then I should be on the "login" page
+    Then show me the page
     And I should see "You need to be logged in to place an order"
-    When I fill in "Username" with "admin"
-    And I fill in "Password" with "admin"
-    And I click "Log In"
+    When I log in using "johndoe" and "password"
     Then I should be on the "index" page
-    And I should see "Successfully logged in admin"
+    And I should see "Successfully logged in johndoe"
     When I click "Place order"
     Then I should see "Order was placed, you can pick it up in 30 minutes"
+    And I should see "The total for your order is 75 kr"

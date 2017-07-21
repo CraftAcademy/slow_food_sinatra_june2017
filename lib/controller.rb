@@ -75,6 +75,7 @@ class SlowFood < Sinatra::Base
 
   post '/order' do
     unless current_user
+      flash[:error] = 'You need to be logged in to place an order'
       redirect '/auth/login'
     end
 
