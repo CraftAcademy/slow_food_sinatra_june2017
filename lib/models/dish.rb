@@ -7,6 +7,4 @@ class Dish
   property :price, Integer
 
   belongs_to :category
-  has n, :rows
-
 end

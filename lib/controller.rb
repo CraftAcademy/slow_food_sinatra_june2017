@@ -75,25 +75,25 @@ class SlowFood < Sinatra::Base
 
   post '/order' do
     unless current_user
+      flash[:error] = 'You need to be logged in to place an order'
       redirect '/auth/login'
     end
-    flash[:success] = "Order was placed, you can pick it up in 30 minutes"
-    @shopping_cart = Shopping_cart.new(session)
-    @shopping_cart.clear_cart()
-    #shopping_cart = Shopping_cart.new(session)
-    #order = Order.new(:user_id => current_user.id, :order_date => Date.new())
-    #rows = []
-    #shopping_cart.show_cart.each do | cart_item |
-    #  row = Row.new(:dish_id => cart_item.dish_id, :quantity => cart_item.quantity)
-    #  rows << row
-    #end
-    #order[:rows] = rows
-    #if order.save
-    #  puts "Order #{order.id} is saved"
-    #else
-    #  puts "Order failed"
-    #end
-    redirect '/'
+
+    shopping_cart = Shopping_cart.new(session)
+    order = Order.new
+    order.user = current_user
+
+    shopping_cart = shopping_cart.show_cart
+
+    shopping_cart.each do |item|
+      order_item = order.order_items.new(quantity: item.quantity, price: item.dish_price)
+      order_item.dish = Dish.get(item.dish_id)
+    end
+
+    if order.save
+      flash[:success] = "Order was placed, you can pick it up in 30 minutes <br> The total for your order is #{order.total_price} kr"
+      redirect '/'
+    end
   end
 
   get '/about' do

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+
+ruby '2.3.3'
 
 gem 'sinatra', '1.3.4'
 gem 'sinatra-flash', '0.3.0', require: 'sinatra/flash'
@@ -10,9 +11,9 @@ gem 'shotgun', '0.9.1'
 gem 'data_mapper'
 gem 'pg'
 gem 'dm-postgres-adapter'
-gem 'pry'
 
 group :development, :test do
+  gem 'pry-byebug'
   gem 'dotenv'
   gem 'cucumber'
   gem 'rspec'

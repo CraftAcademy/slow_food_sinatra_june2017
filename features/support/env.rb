@@ -5,7 +5,7 @@ require './lib/controller.rb'
 require 'capybara'
 require 'capybara/cucumber'
 require 'rspec'
-require 'pry'
+require 'pry-byebug'
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
 
