@@ -81,14 +81,11 @@ class SlowFood < Sinatra::Base
     shopping_cart = Shopping_cart.new(session)
     order = Order.new
     order.user = current_user
-    order.total_price = shopping_cart.cart_total
-    order.order_status = 'new'
-    order.order_date = DateTime.now
 
     shopping_cart = shopping_cart.show_cart
 
     shopping_cart.each do |item|
-      order_item = order.order_items.new(quantity: item.quantity)
+      order_item = order.order_items.new(quantity: item.quantity, price: item.dish_price)
       order_item.dish = Dish.get(item.dish_id)
     end
 
