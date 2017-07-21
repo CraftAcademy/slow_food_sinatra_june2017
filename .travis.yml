@@ -1,14 +1,14 @@
 language: ruby
 rvm: 2.2.3
+sudo: required
 cache:
   - bundler
   - apt
 addons:
-  postgresql: '9.6'
-group: deprecated-2017Q3
+  postgresql: '9.4'
 before_install:
-  - sudo apt-get update --qq
-  - sudo apt-get -qq postgresql-server-dev-9.6 libpq-dev
+  - sudo apt-get update
+  - sudo apt-get install -y postgresql-server-dev-9.6 libpq-dev
 before_script:
   - psql -c 'CREATE DATABASE slowfood_v1_test;' -U postgres
 script:
