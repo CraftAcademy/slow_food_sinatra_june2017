@@ -1,0 +1,9 @@
+language: ruby
+rvm: 2.2.3
+addons:
+  postgresql: '9.6'
+before_script:
+  - psql -c 'CREATE DATABASE slowfood_v1_test;' -U postgres
+script:
+  - bundle exec rspec
+  - bundle exec cucumber
