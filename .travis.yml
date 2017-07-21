@@ -5,6 +5,7 @@ cache:
   - apt
 addons:
   postgresql: '9.6'
+group: deprecated-2017Q3
 before_install:
   - sudo apt-get update --qq
   - sudo apt-get -qq postgresql-server-dev-9.6 libpq-dev
