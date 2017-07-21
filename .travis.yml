@@ -1,11 +1,12 @@
 language: ruby
 rvm: 2.2.3
-sudo: required
+notifications:
+  email: false
 cache:
   - bundler
   - apt
 addons:
-  postgresql: '9.4'
+  postgresql: '9.6'
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y postgresql-server-dev-9.6 libpq-dev
