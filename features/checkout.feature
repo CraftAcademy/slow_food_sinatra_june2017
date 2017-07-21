@@ -21,4 +21,3 @@ Scenario: A customer needs to be able to checkout
   And I click on the "add" button
   And I click on the "checkout" button
   Then I should see "Order was placed"
-  And show me the page
