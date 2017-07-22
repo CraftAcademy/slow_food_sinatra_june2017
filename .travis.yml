@@ -1,0 +1,23 @@
+language: ruby
+rvm: 2.2.3
+notifications:
+  email: false
+cache:
+  - bundler
+  - apt
+addons:
+  postgresql: '9.6'
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y postgresql-server-dev-9.6 libpq-dev
+before_script:
+  - psql -c 'CREATE DATABASE slowfood_v1_test;' -U postgres
+script:
+  - bundle exec rspec
+  - bundle exec cucumber
+deploy:
+  provider: heroku
+  api_key:
+    secure: HaUxznB08NzL2aEdW8nw+8ijfA6/07uulb6FQEhkm8qL5tX125x/4Ua9U9YQzd072ub6LCGydg6ahtF9HTRvlDb205ZWTgIQ5JS3Z+67+n3vjyMN4KPCPpJ+FWKrrQ57YfKzslUKxKjO3w7S/WBK+QOZueUXDdGSMDlo2wJahahqybFYBxuDvF2Tv7BgJUlUCgNQuJnlTqGTzz1X2Esqod3FajSRXOiPdBt0RMYyq04LxcFnSIWiLMTMU+u7apxSvnzh9NomWF2MvbOnXHJklU9mwKEUIs/+od5ZZ8iF0jsA0RQSXhJE0AEakuNEMV0BnEBwZ9Fx4rN2C1tO2a4XT/vSG881/EqUsPhNppz8kCv/JZPE2pjb7PaO6uFPmWzyVM44iQSiBGD9GWyLfMKRVes47BOMouwcEeTyiD/LilINIpa7x+5pyHTBn3Mwxv7oWvfCQLxIkeno575icNw5zJjTmJ+xCe3fi5KnU78dv/zm0EqE1Cey4qeteFYb5B1kQh3QF4JWARqB2GK22uqI8PNlyFWAridUarfm0bhmxgu+1KyVhrVM6M67MRYMbhgJVUOF0L366ipKHMs8YQXsSVVA5QFrrFdnihaqDqD8Gxn7UwOHV2JyyBOMZhWN90QwCmzGDl1t5EU2kNFKHn2FrfdwQU2a5hxi59wV4TsVJaM=
+  app:
+    develop: sf-sinatra-june17-dev
